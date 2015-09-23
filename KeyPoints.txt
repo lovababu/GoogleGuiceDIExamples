@@ -1,0 +1,25 @@
+##Just In Time Bindings.
+  -- The bindings in a module are called Explicit bindings, Guice injector uses them whenever they are available.
+     If a type needed but there is not as explicit binding, the injector will attempt to create a Just-In-Time bindings.
+     JIT bindings also called Implicit bindings.
+
+  -- Eligible constructors.
+     Guice can create bindings for concrete types by using the type's injectable constructor. This is either a non-private,
+     no-arguments constructor, or a constructor with the @Inject annotation.
+
+  -- @ImplementedBy.
+     Annotate types tell the injector what their default implementation type is.
+     The @ImplementedBy annotation acts like a linked binding, specifying the subtype to use when building a type.
+     If a type is in both a bind() statement (as the first argument) and has the @ImplementedBy annotation, the bind() statement is used.
+     The annotation suggests a default implementation that can be overridden with a binding. Use @ImplementedBy carefully;
+     it adds a compile-time dependency from the interface to its implementation.
+
+  -- @ProvidedBy.
+     @ProvidedBy tells the injector about a Provider class that produces instances.
+     Like @ImplementedBy, if the type is annotated and used in a bind() statement, the bind() statement will be used.
+
+### Scopes.
+  -- Singleton.
+     EagerSingleton and LazySingleton.
+  -- RequestScoped.
+  -- SessionScoped.

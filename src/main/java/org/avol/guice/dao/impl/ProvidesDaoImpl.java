@@ -10,7 +10,6 @@ public class ProvidesDaoImpl implements GreetDao {
     private final String message;
 
     public ProvidesDaoImpl(String message) {
-        System.out.println(">>>>>>>>>>>>>>> " + message.length());
         this.message = message;
     }
 
