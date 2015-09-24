@@ -15,3 +15,7 @@
 ### How to understand.?  
   Start from Test classes, for every concept we have dedicated test class try to run and observe the flow.  
   
+### Note:
+  Most of the places i am using ``` javax.inject.Inject ``` annotation to specify dependencies, so that we can avoid 
+  Google Guice library imports in specific layers.
+  

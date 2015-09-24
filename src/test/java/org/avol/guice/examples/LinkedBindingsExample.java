@@ -20,6 +20,8 @@ public class LinkedBindingsExample {
         //comment below two lines and observer sys out.
         LinkingBindingService linkingBindingService = guiceInjector.getInstance(LinkingBindingServiceImpl.class);
         linkingBindingService.sayWelcome("Srilekha");
+
+        //call getInstance(LinkingBindingServiceImpl.class) and observe the instance reference.
     }
 }
 

@@ -1,7 +1,7 @@
 package org.avol.guice.modules;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Singleton;
+import com.google.inject.Scopes;
 import org.avol.guice.dao.GreetDao;
 import org.avol.guice.dao.impl.WelcomeDaoImpl;
 import org.avol.guice.service.LinkingBindingService;
@@ -19,8 +19,9 @@ import org.avol.guice.service.impl.LinkingBindingServiceImpl;
 public class LinkingModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(GreetDao.class).to(WelcomeDaoImpl.class).asEagerSingleton(); //Singleton instance created eagerly.
-        bind(LinkingBindingService.class).to(LinkingBindingServiceImpl.class).in(Singleton.class); //Singleton instance created when app required.
+        bind(GreetDao.class).to(WelcomeDaoImpl.class).asEagerSingleton();       //Singleton instance created eagerly.
+        bind(LinkingBindingService.class).to(LinkingBindingServiceImpl.class);  //.in(Scope) doesn't work, when you getInstance by impl class.
+        bind(LinkingBindingServiceImpl.class).in(Scopes.SINGLETON);             //Singleton instance created when app required.
         /**
          *  Remove the above <code> LinkingBindingService </code> binding and run the test class, you don't see any error.
          *  The reason is Guice uses Just In Time Bindings to create requested object. JIT bindings also known as implicit bindings.

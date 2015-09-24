@@ -22,4 +22,36 @@
   -- Singleton.
      EagerSingleton and LazySingleton.
   -- RequestScoped.
+     For web applications.
   -- SessionScoped.
+     For web applications.
+
+### Injections.
+  -- Constructor Injection.
+     @Inject annotation on constructor, If your class has no @Inject annotated constructor,
+     Guice will use public no arg constructor if it exists.
+
+  -- Method Injection.
+     Guice can inject methods that have the @Inject annotation.
+
+  -- Field Injection.
+     Guice inject fields with the @Inject annotation. Avoid field injection with final fields, which make weak semantics.
+
+  -- Optional Injection.
+     Occassionally its convenient to use a dependency when it exists and to fallback to a default when it doesn't.
+     Method and field injections may be optional, which causes Guice to silently ignore when dependency not available.
+     To use optional injection @Inject(optional=true)
+
+  -- OnDemand Injection.
+     Method and field injection can be used to initialize an existing instance. You can use the Injector.injectMembers API.
+
+  -- Static Injection.
+     Use requestStaticInjection() in a module to specify classes to be injected at injector-creation time:
+     Static members will not be injected at instance-injection time. This API is not recommended for general use because
+     it suffers many of the same problems as static factories
+
+  -- Automatic Injection.
+     Guice automatically injects the fallowing.
+     - toInstance() in bind statement. Ex. bind(A.class).toInstance(AImpl.class);
+     - toProvider() in bind statement. Ex. bind(A.class).toProvider(AImpl.class);
+
